@@ -10,7 +10,7 @@ top = 15mm,
 bottom = 25mm}
 \title{Midterm Report: Rossmann Store Sales Prediction}
 \date{\vspace{-5ex}}
-\author{Hao Qian, Yuning Yang}
+\author{Hao Qian(hq43), Yuning Yang(yy693)}
 
 \begin{document}
 \maketitle
@@ -18,7 +18,7 @@ bottom = 25mm}
 Our project aims at modeling the sales of these Rossmann stores and predicting their 6 weeks of sales to support the stores’ daily operation. The prediction would help the specific stores to schedule their staff more efficiently. It would also help the company to find out both the most and the least profitable stores and adjust their business strategies accordingly. From the analysis, we'll also try to learn in what degree various factors contribute to the sales. 
 
 \section{Brief Data Description}
-We will use two datasets to train our models. One dataset has over 1 million records with information of store, sales, customer, competitors and promos, which are all closely related to sales results. The other dataset has one record per store, describing a store's type, recurring promos and competitors. In Section 4, we will describe how we deal with various fields in details.\\
+We will use two datasets to train our models. One dataset has over 1 million records with 9 columns of store, sales, customer, competitors and promos, which are all closely related to sales results. The other dataset has one record per store, describing a store's type, recurring promos and competitors with 10 columns. In Section 4, we will describe how we deal with various fields in details.\\
 We'll use the test dataset with 40k records provided by Kaggle and submit our predication results to evaluate our models. We find that some test records hold NA values on StoreOpen attribute, we fix them by checking if sales is zero.
 
 \section{Exploratory Data Analysis}
@@ -59,7 +59,7 @@ Field Promo2\{0,1\}, which indicates if a store participants in a continuing and
 For fields (CompetitionDistance, CompetitionSince), we will check if a store has competitors at specified date, if not, we'll assign a very big value of CompetitonDistance which indicates it doesn't influence the store. In this way we can eliminate NA values of CompetitionDistance.
 
 \section{Preliminary Predictions \& Discoveries}
-To start with, we first use 4 basic features (DayOfWeek, StateHoliday, SchoolHoliday, Promotion) and 844392 examples (shops that are open) from our first dataset. Multinominal feature like DayOfWeek has been transfered as explained in previous part. 10 features are used to train our models. Constant offset is also added when doing computation. So far we have applied least sqaure and huber regression ($\sigma=1$), both with zero regularizer. Each model has different loss functions. Least sqaure minimized average error, huber regression penalized outliers less to be much robust. The performance of the models are evaluted using root mean sqaure percentage error (RMSPE).
+To start with, we first use 4 basic features (DayOfWeek, StateHoliday, SchoolHoliday, Promotion) and 844392 examples (shops that are open) from our first dataset. Multinominal feature like DayOfWeek has been transformed as explained in previous part. 13 features are used to train our models. Constant offset is also added when doing computation. So far we have applied least sqaure and huber regression ($\sigma=1$), both with zero regularizer. Each model has different loss functions. Least sqaure minimized average error, huber regression penalized outliers less to be much robust. The performance of the models are evaluted using root mean sqaure percentage error (RMSPE).
 
 \begin{table}[h!]
 \centering
